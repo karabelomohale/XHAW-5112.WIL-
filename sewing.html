@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empowering the Nation - Sewing Course</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <img src="Images/logo.png" width="150" height="150" alt="Empowering the Nation Logo">
+    <h1>Empowering the Nation</h1>
+</header>
+
+<nav>
+    <a href="Home.html">Home</a>
+    <a href="courses.html">Courses</a>
+    <a href="calculate-fees.html">Calculate Fees</a>
+    <a href="contact.html">Contact Us</a>
+</nav>
+
+<div class="container">
+    <h2>Sewing Course</h2>
+    <p><strong>Fees:</strong> R1500</p>
+    <p><strong>Purpose:</strong> To provide alterations and new garment tailoring services</p>
+    <h3>Content:</h3>
+    <ul>
+        <li>Types of stitches</li>
+        <li>Threading a sewing machine</li>
+        <li>Sewing buttons, zips, hems, and seams</li>
+        <li>Alterations</li>
+        <li>Designing and sewing new garments</li>
+    </ul>
+    <button onclick="enroll('Sewing', 1500)">Enroll Now</button>
+</div>
+
+<footer>
+    <p>&copy; 2024 Empowering the Nation. All rights reserved.</p>
+</footer>
+
+<script>
+    function enroll(courseName, coursePrice) {
+        let selectedCourses = JSON.parse(localStorage.getItem('selectedCourses')) || [];
+        selectedCourses.push({ name: courseName, price: coursePrice });
+        localStorage.setItem('selectedCourses', JSON.stringify(selectedCourses));
+        alert(courseName + " has been added to Calculate Fees.");
+    }
+</script>
+
+</body>
+</html>

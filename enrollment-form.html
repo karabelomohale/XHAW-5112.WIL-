@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empowering the Nation - Enrollment Form</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+
+
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #005f73;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #005f73;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="Images/logo.png" width="150" height="150" alt="Empowering the Nation Logo">
+    <h1>Empowering the Nation</h1>
+</header>
+
+<nav>
+    <a href="home.html">Home</a>
+    <a href="courses.html">Courses</a>
+    <a href="calculate-fees.html">Calculate Fees</a>
+    <a href="contact.html">Contact Us</a>
+</nav>
+
+<div class="container">
+    <h2>Enrollment Form</h2>
+    <form id="enrollment-form">
+        <label for="full-name">Full Name:</label>
+        <input type="text" id="full-name" name="full-name" required placeholder="Full name">
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required placeholder="Email address">
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required placeholder="Phone number">
+
+        <button type="submit">Submit Enrollment</button>
+    </form>
+</div>
+
+<footer>
+    <p>&copy; 2024 Empowering the Nation. All rights reserved.</p>
+</footer>
+
+<script>
+    // Add event listener to the form submission
+    document.getElementById('enrollment-form').addEventListener('submit', function(event) {
+        // Prevent the default form submission
+        event.preventDefault();
+
+        // Get the form input values
+        const fullName = document.getElementById('full-name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+
+        // Create a confirmation message with the input details
+        const message = `Thank you, ${fullName}!\n\nYour enrollment is complete.\n\nDetails:\n- Email: ${email}\n- Phone: ${phone}`;
+
+        // Display the message in a popup
+        alert(message);
+
+        // Optionally, clear the form fields after submission
+        document.getElementById('enrollment-form').reset();
+    });
+</script>
+
+</body>
+</html>

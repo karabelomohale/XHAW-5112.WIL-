@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empowering the Nation - Calculate Fees</title>
+    <meta name="description" content="Calculate the total fees for selected courses.">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header img {
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        /* Container */
+        .container {
+            max-width: 500px;
+            background-color: white;
+            padding: 30px;
+            margin: 40px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #005f73;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        ul li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .remove-icon {
+            cursor: pointer;
+            color: red;
+            font-size: 18px;
+            margin-left: 10px;
+        }
+
+        .remove-icon:hover {
+            color: darkred;
+        }
+
+        .summary {
+            font-weight: bold;
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Button */
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #005f73;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="Images/logo.png" width="150" height="150" alt="Empowering the Nation Logo">
+    <h1>Calculate Fees</h1>
+</header>
+
+<nav>
+    <a href="Home.html">Home</a>
+    <a href="courses.html">Courses</a>
+    <a href="calculate-fees.html">Calculate Fees</a>
+    <a href="contact.html">Contact Us</a>
+</nav>
+
+<div class="container">
+    <h2>Selected Courses</h2>
+    <ul id="course-list"></ul>
+    <p class="summary">Discount: <span id="discount-amount">R0</span></p>
+    <p class="summary">VAT (15%): <span id="vat-amount">R0</span></p>
+    <p class="summary">Total Fee: <span id="total-fee">R0</span></p>
+    <button onclick="location.href='login.html'">Complete Enrollment</button>
+</div>
+
+<footer>
+    <p>&copy; 2024 Empowering the Nation. All rights reserved.</p>
+</footer>
+
+<script>
+    const VAT_RATE = 0.15;
+
+    // Function to calculate discount based on the number of selected courses
+    function calculateDiscount(subtotal, courseCount) {
+        let discountRate = 0;
+        if (courseCount >= 2 && courseCount < 5) {
+            discountRate = 0.10; // 10% discount for 3-4 courses
+        } else if (courseCount >= 5) {
+            discountRate = 0.15; // 15% discount for 5 or more courses
+        }
+        return subtotal * discountRate;
+    }
+
+    // Function to calculate VAT
+    function calculateVAT(amount) {
+        return amount * VAT_RATE;
+    }
+
+    // Function to display selected courses and calculate total fees with discount and VAT
+    function displaySelectedCourses() {
+        let selectedCourses = JSON.parse(localStorage.getItem('selectedCourses')) || [];
+        let courseList = document.getElementById('course-list');
+        let subtotal = 0;
+        let totalFee = 0;
+
+        // Clear any existing course list
+        courseList.innerHTML = "";
+
+        // Calculate subtotal from selected courses
+        selectedCourses.forEach(function(course, index) {
+            let li = document.createElement('li');
+            li.innerHTML = `${course.name} - R${course.price} 
+                <span class="remove-icon" onclick="removeCourse(${index})" title="Remove Course">&#128465;</span>`; // Trash bin icon
+            courseList.appendChild(li);
+            subtotal += course.price;
+        });
+
+        // Calculate discount
+        const discount = calculateDiscount(subtotal, selectedCourses.length);
+
+        // Calculate VAT on the discounted amount
+        const discountedSubtotal = subtotal - discount;
+        const vatAmount = calculateVAT(discountedSubtotal);
+
+        // Calculate total fee after applying discount and VAT
+        totalFee = discountedSubtotal + vatAmount;
+
+        // Update the discount, VAT, and total fee in the UI
+        document.getElementById('discount-amount').textContent = discount.toFixed(2);
+        document.getElementById('vat-amount').textContent = vatAmount.toFixed(2);
+        document.getElementById('total-fee').textContent = totalFee.toFixed(2);
+    }
+
+    // Function to remove a course based on its index in the array
+    function removeCourse(index) {
+        let selectedCourses = JSON.parse(localStorage.getItem('selectedCourses')) || [];
+        
+        // Remove the course at the specified index
+        selectedCourses.splice(index, 1);
+        
+        // Update localStorage with the new array
+        localStorage.setItem('selectedCourses', JSON.stringify(selectedCourses));
+        
+        // Refresh the course list to reflect the removal
+        displaySelectedCourses();
+    }
+
+    // Call the function when the page loads
+    window.onload = displaySelectedCourses;
+</script>
+
+</body>
+</html>

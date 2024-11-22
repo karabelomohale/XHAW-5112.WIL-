@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empowering the Nation - Login / Sign Up</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #005f73;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #005f73;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #0a9396;
+        }
+
+        #toggle-signup {
+            background-color: transparent;
+            color: #005f73;
+            border: 1px solid #005f73;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        #toggle-signup:hover {
+            background-color: #005f73;
+            color: white;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9rem;
+        }
+        /* Success Message Popup */
+        #success-message {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2a9d8f;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            z-index: 9999;
+        }
+
+        /* Error Popup */
+        #error-message {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: red;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Empowering the Nation</h1>
+</header>
+
+<nav>
+    <a href="home.html">Home</a>
+    <a href="courses.html">Courses</a>
+    <a href="calculate-fees.html">Calculate Fees</a>
+    <a href="contact.html">Contact Us</a>
+</nav>
+
+<div class="container">
+    <h2>Login / Sign Up</h2>
+    
+    <button id="toggle-signup">Don't have an account? Sign Up</button>
+    
+    <!-- Login Form -->
+    <form id="login-form">
+        <label for="email">Email Address:</label>
+        <input type="email" id="login-email" name="email" required>
+        <small class="error" id="login-error"></small>
+
+        <label for="password">Password:</label>
+        <input type="password" id="login-password" name="password" required>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <!-- Sign Up Form -->
+    <form id="signup-form" style="display: none;">
+        <label for="full-name">Full Name:</label>
+        <input type="text" id="full-name" name="full-name" required>
+
+        <label for="email-signup">Email Address:</label>
+        <input type="email" id="email-signup" name="email-signup" required>
+
+        <label for="confirm-email">Confirm Email Address:</label>
+        <input type="email" id="confirm-email" name="confirm-email" required>
+        <small class="error" id="email-error"></small>
+
+        <label for="password-signup">Password:</label>
+        <input type="password" id="password-signup" name="password-signup" required>
+        <small class="error" id="password-error"></small>
+
+        <label for="confirm-password">Confirm Password:</label>
+        <input type="password" id="confirm-password" name="confirm-password" required>
+        <small class="error" id="confirm-password-error"></small>
+
+        <button type="submit">Sign Up</button>
+    </form>
+</div>
+
+<footer>
+    <p>&copy; 2024 Empowering the Nation. All rights reserved.</p>
+</footer>
+
+<!-- Success and Error Messages -->
+<div id="success-message">Account created successfully!</div>
+<div id="error-message">Passwords do not match!</div>
+
+<script>
+    // Toggle between Login and Sign Up forms
+    document.getElementById('toggle-signup').addEventListener('click', function() {
+        const loginForm = document.getElementById('login-form');
+        const signupForm = document.getElementById('signup-form');
+        const toggleButton = document.getElementById('toggle-signup');
+        
+        if (signupForm.style.display === 'none') {
+            signupForm.style.display = 'block';
+            loginForm.style.display = 'none';
+            toggleButton.textContent = 'Already have an account? Log In';
+        } else {
+            signupForm.style.display = 'none';
+            loginForm.style.display = 'block';
+            toggleButton.textContent = 'Don\'t have an account? Sign Up';
+        }
+    });
+
+    // Handle login form submission and redirect to enrollment form
+    document.getElementById('login-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const email = document.getElementById('login-email').value;
+        const password = document.getElementById('login-password').value;
+        const loginError = document.getElementById('login-error');
+
+        if (!email || !password) {
+            loginError.textContent = 'Please fill in both fields.';
+            return;
+        }
+
+        loginError.textContent = '';
+        // Redirect to enrollment form after successful login
+        window.location.href = 'enrollment-form.html';
+    });
+</script>
+
+</body>
+</html>

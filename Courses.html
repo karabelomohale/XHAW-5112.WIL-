@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empowering the Nation - Courses</title>
+    <meta name="description" content="Explore our courses for domestic workers and gardeners.">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .course-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.2s;
+            text-decoration: none; 
+            color: inherit; 
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .course-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .course-info {
+            padding: 15px;
+        }
+
+        .course-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin: 0 0 10px 0;
+        }
+
+        .course-description {
+            font-size: 14px;
+            color: #666;
+            margin: 0 0 10px 0;
+        }
+
+        .course-fee {
+            font-size: 16px;
+            color: #2c8b2c;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="Images/logo.png" width="150" height="150" alt="Empowering the Nation Logo">
+    <h1>Empowering the Nation</h1>
+</header>
+
+<nav>
+    <a href="Home.html">Home</a>
+    <a href="courses.html">Courses</a>
+    <a href="calculate-fees.html">Calculate Fees</a>
+    <a href="contact.html">Contact Us</a>
+</nav>
+
+<div class="container">
+    <h2>Our Courses</h2>
+    <h3>Six-Month Courses</h3>
+    <div class="course-grid">
+        <a href="first-aid.html" class="course-card">
+            <img src="Images/first_aid.jpg" alt="First Aid" class="course-image">
+            <div class="course-info">
+                <h3 class="course-title">First Aid</h3>
+                <p class="course-description">Learn essential first aid skills and techniques.</p>
+                <p class="course-fee">R1500</p>
+            </div>
+        </a>
+
+        <a href="sewing.html" class="course-card">
+            <img src="Images/sewing.jpg" alt="Sewing" class="course-image">
+            <div class="course-info">
+                <h3 class="course-title">Sewing</h3>
+                <p class="course-description">Develop sewing skills for practical and creative projects.</p>
+                <p class="course-fee">R1500</p>
+            </div>
+        </a>
+
+        <a href="landscaping.html" class="course-card">
+            <img src="Images/landscaping.jpg" alt="Landscaping" class="course-image">
+            <div class="course-info">
+                <h3 class="course-title">Landscaping</h3>
+                <p class="course-description">Get trained in landscaping techniques and garden design.</p>
+                <p class="course-fee">R1500</p>
+            </div>
+        </a>
+
+        <a href="life-skills.html" class="course-card">
+            <img src="Images/life_skills.jpg" alt="Life Skills" class="course-image">
+            <div class="course-info">
+                <h3 class="course-title">Life Skills</h3>
+                <p class="course-description">Improve your personal and professional life skills.</p>
+                <p class="course-fee">R1500</p>
+            </div>
+        </a>
+    </div>
+
+    <h3>Six-Week Courses</h3>
+    <div class="course-grid">
+        <a href="child-minding.html" class="course-card">
+            <img src="Images/child_minding.jpg" alt="Child Minding" class="course-image">
+            <div class="course-info">
+                <h3 class="course-title">Child Minding</h3>
+                <p class="course-description">Gain skills to care for and supervise children.</p>
+                <p class="course-fee">R750</p>
+            </div>
+        </a>
+
+        <a href="cooking.html" class="course-card">
+            <img src="Images/cooking.jpg" alt="Cooking" class="course-image">
+            <div class="course-info">
+                <h3 class="course-title">Cooking</h3>
+                <p class="course-description">Learn cooking techniques and recipes.</p>
+                <p class="course-fee">R750</p>
+            </div>
+        </a>
+
+        <a href="garden-maintenance.html" class="course-card">
+            <img src="Images/garden_maintenance.jpg" alt="Garden Maintenance" class="course-image">
+            <div class="course-info">
+                <h3 class="course-title">Garden Maintenance</h3>
+                <p class="course-description">Enhance your skills in garden care and upkeep.</p>
+                <p class="course-fee">R750</p>
+            </div>
+        </a>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Empowering the Nation. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

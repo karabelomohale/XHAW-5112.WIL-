@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empowering the Nation - Garden Maintenance Course</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <img src="Images/logo.png" width="150" height="150" alt="Empowering the Nation Logo">
+    <h1>Empowering the Nation</h1>
+</header>
+
+<nav>
+    <a href="Home.html">Home</a>
+    <a href="courses.html">Courses</a>
+    <a href="calculate-fees.html">Calculate Fees</a>
+    <a href="contact.html">Contact Us</a>
+</nav>
+
+<div class="container">
+    <h2>Garden Maintenance Course</h2>
+    <p><strong>Fees:</strong> R750</p>
+    <p><strong>Purpose:</strong> To provide basic knowledge of watering, pruning, and planting in a domestic garden.</p>
+    <h3>Content:</h3>
+    <ul>
+        <li>Water restrictions and the watering requirements of indigenous and exotic plants</li>
+        <li>Pruning and propagation of plants</li>
+        <li>Planting techniques for different plant types</li>
+    </ul>
+    <button onclick="enroll('Garden Maintenance', 750)">Enroll Now</button>
+</div>
+
+<footer>
+    <p>&copy; 2024 Empowering the Nation. All rights reserved.</p>
+</footer>
+
+<script>
+    function enroll(courseName, coursePrice) {
+        let selectedCourses = JSON.parse(localStorage.getItem('selectedCourses')) || [];
+        selectedCourses.push({ name: courseName, price: coursePrice });
+        localStorage.setItem('selectedCourses', JSON.stringify(selectedCourses));
+        alert(courseName + " has been added to Calculate Fees.");
+    }
+</script>
+
+</body>
+</html>
